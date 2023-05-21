@@ -51,6 +51,19 @@ createApp({
         this.nuovoItemInserito= '';
       }
       */
+
+      //Invio al server CON form
+      const nuovoItem = new FormData();
+      nuovoItem.append('text', this.nuovoItemInserito);
+
+      axios.post(this.apiUrl, nuovoItem)
+        .then(result => {
+          this.lista = result.data
+          console.log('ricevo dopo l\'aggiunta',this.lista);
+        })
+
+      this.nuovoItemInserito= '';
+
     },
 
     inserisciMsg(msg){
