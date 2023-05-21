@@ -6,20 +6,7 @@ createApp({
 
     return {
       apiUrl: 'server.php',
-      lista: [
-        // {
-        //   text: 'fare spesa',
-        //   done: false,
-        // },
-        // {
-        //   text: 'pulire bagno',
-        //   done: true,
-        // },
-        // {
-        //   text: 'preparare la cena',
-        //   done: false,
-        // },
-      ],
+      lista: [],
       msgError: '',
       nuovoItemInserito: '',
     }
@@ -31,7 +18,8 @@ createApp({
     readList(){
       axios.get(this.apiUrl)
       .then(result => {
-        console.log(result.data)
+        this.lista = result.data
+        console.log(this.lista)
       })
     },
 
@@ -49,9 +37,18 @@ createApp({
       }else {
         const nuovoItem = {
           text: this.nuovoItemInserito,
-          done:false,
+          // done:false,
         }
-        this.lista.unshift(nuovoItem);
+
+        axios.post(this.apiUrl, nuovoItem, {
+          headers: {'Content-Type': 'multipart/form-data'}
+        }).then(result => {
+          this.lista = result.data
+          console.log('ricevo dopo l\'aggiunta',this.lista);
+        })
+
+
+        // this.lista.unshift(nuovoItem);
         this.nuovoItemInserito= '';
       }
     },
