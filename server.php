@@ -12,7 +12,7 @@ if(isset($_POST['task'])){
 }
 //aggiunta elemento alla lista
 function filePut($list){
-  file_put_contents('db.json', json_encode($list));
+  file_put_contents('db.json', json_encode($list, JSON_PRETTY_PRINT));
 }
 
 
