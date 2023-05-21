@@ -2,11 +2,12 @@
 
 $json_string = file_get_contents('db.json');
 
-$list = json_decode($json_string);
+$list = json_decode($json_string, true);
 
 //aggiunta elemento alla lista
-if(isset($_POST['text'])){
-  $list[] = $_POST['text'];
+if(isset($_POST['task'])){
+  $list[] = $_POST['task'];
+  $json_string = json_encode($list, true);
   filePut($list);
 }
 //aggiunta elemento alla lista

@@ -24,36 +24,49 @@ createApp({
     },
 
     elimina(i) {
-      
-      const eliminaItem = new FormData();
-      eliminaItem.append('elimina', i);
-      
-      axios.post(this.apiUrl, eliminaItem)
-      .then(result => {
-        this.lista = result.data
-        console.log('ricevo dopo l\'eliminazione',this.lista);
-      })
-      
-      console.log(i)
-      // if (this.lista[i].done) {
-      //   this.lista.splice(i, 1)
-      // } else {
-      //   this.inserisciMsg('Devi sbarrare prima di eliminare')
+
+      // if(confirm('Vuoi davvero eliminare questo elemento?')){
+      //   const eliminaItem = new FormData();
+      //   eliminaItem.append('elimina', i);
+        
+      //   axios.post(this.apiUrl, eliminaItem)
+      //   .then(result => {
+      //     this.lista = result.data
+      //     console.log('ricevo dopo l\'eliminazione',this.lista);
+      //   })
       // }
+      
+      if (!this.lista[i].done) {
+        const eliminaItem = new FormData();
+        eliminaItem.append('elimina', i);
+        
+        axios.post(this.apiUrl, eliminaItem)
+        .then(result => {
+          this.lista = result.data
+          console.log('ricevo dopo l\'eliminazione',this.lista);
+        })
+      } else {
+        this.inserisciMsg('Devi sbarrare prima di eliminare')
+      }
     },
 
     aggiungi(){
-      /*
-      * Invio al server senza form utilizzando (headers: {'Content-Type': 'multipart/form-data'})
+      
+      // Invio al server senza form utilizzando (headers: {'Content-Type': 'multipart/form-data'})
 
       if(this.nuovoItemInserito.length == 0){
         this.inserisciMsg('Devi inserire un testo')
       }else {
         const nuovoItem = {
           text: this.nuovoItemInserito,
+          done: false,
+        }
+
+        const data = {
+          task: nuovoItem
         }
         
-        axios.post(this.apiUrl, nuovoItem, {
+        axios.post(this.apiUrl, data, {
           headers: {'Content-Type': 'multipart/form-data'}
         }).then(result => {
           this.lista = result.data
@@ -62,14 +75,16 @@ createApp({
         
         this.nuovoItemInserito= '';
       }
-      */
+      
 
+      /*
       //Invio al server CON form
       if(this.nuovoItemInserito.length == 0){
         this.inserisciMsg('Devi inserire un testo')
       }else {
       const nuovoItem = new FormData();
       nuovoItem.append('text', this.nuovoItemInserito);
+      nuovoItem.append('done', false);
 
       axios.post(this.apiUrl, nuovoItem)
         .then(result => {
@@ -79,6 +94,7 @@ createApp({
 
       this.nuovoItemInserito= '';
       }
+      */
 
     },
 

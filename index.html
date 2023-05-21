@@ -1,9 +1,3 @@
-<?php
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +49,7 @@
           @click="item.done = !item.done">
 
           <span
-            :class="{'done' : item.done}">{{item}}</span>
+            :class="{'done' : !item.done}">{{item.text}}</span>
           <i @click.stop="elimina(i)" class="fa-regular fa-circle-xmark"></i>
         </li>
 

@@ -28,5 +28,3 @@ Abilitare l’eliminazione di un task
 1. Gli elementi statici vengono letti via axios con vue da un json
 2. Quando ne aggiungo uno richiamo un metodo axios che va a puntare un file PHP che riceve il dato in POST 
 3. Il file PHP va a leggere il file json, lo trasforma in array, aggiunge l'elemento nuovo, lo salva 
-
-BONUS min 1:21:57 per eliminare (fare i passaggi inversi)
