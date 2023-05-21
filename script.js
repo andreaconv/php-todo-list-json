@@ -32,25 +32,25 @@ createApp({
     },
 
     aggiungi(){
+      /*
+      * Invio al server senza form utilizzando (headers: {'Content-Type': 'multipart/form-data'})
       if(this.nuovoItemInserito.length == 0){
         this.inserisciMsg('Devi inserire un testo')
       }else {
         const nuovoItem = {
           text: this.nuovoItemInserito,
-          // done:false,
         }
-
+        
         axios.post(this.apiUrl, nuovoItem, {
           headers: {'Content-Type': 'multipart/form-data'}
         }).then(result => {
           this.lista = result.data
           console.log('ricevo dopo l\'aggiunta',this.lista);
         })
-
-
-        // this.lista.unshift(nuovoItem);
+        
         this.nuovoItemInserito= '';
       }
+      */
     },
 
     inserisciMsg(msg){
