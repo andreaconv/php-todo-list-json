@@ -49,7 +49,7 @@
           @click="item.done = !item.done">
 
           <span
-            :class="{'done' : !item.done}">{{item.text}}</span>
+            :class="{'done' : item.done}">{{item.text}}</span>
           <i @click.stop="elimina(i)" class="fa-regular fa-circle-xmark"></i>
         </li>
 

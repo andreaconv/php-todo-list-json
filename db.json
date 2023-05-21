@@ -1,18 +1,14 @@
 [
     {
-        "text": "grazie mille",
-        "done": "false"
+        "text": "fare la spesa",
+        "done": false
     },
     {
-        "text": "ciao marco",
-        "done": "false"
+        "text": "pulire il bagno",
+        "done": false
     },
     {
-        "text": "ciao",
-        "done": "false"
-    },
-    {
-        "text": "new",
-        "done": "false"
+        "text": "preparare la cena",
+        "done": false
     }
 ]

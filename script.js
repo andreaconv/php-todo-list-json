@@ -36,7 +36,7 @@ createApp({
       //   })
       // }
       
-      if (!this.lista[i].done) {
+      if (this.lista[i].done) {
         const eliminaItem = new FormData();
         eliminaItem.append('elimina', i);
         
@@ -52,8 +52,9 @@ createApp({
 
     aggiungi(){
       
-      // Invio al server senza form utilizzando (headers: {'Content-Type': 'multipart/form-data'})
+      // Invio al server senza FormData utilizzando (headers: {'Content-Type': 'multipart/form-data'})
 
+      /*
       if(this.nuovoItemInserito.length == 0){
         this.inserisciMsg('Devi inserire un testo')
       }else {
@@ -75,16 +76,15 @@ createApp({
         
         this.nuovoItemInserito= '';
       }
-      
+      */
 
-      /*
-      //Invio al server CON form
+      
+      //Invio al server CON FormData
       if(this.nuovoItemInserito.length == 0){
         this.inserisciMsg('Devi inserire un testo')
       }else {
       const nuovoItem = new FormData();
-      nuovoItem.append('text', this.nuovoItemInserito);
-      nuovoItem.append('done', false);
+      nuovoItem.append('item', this.nuovoItemInserito);
 
       axios.post(this.apiUrl, nuovoItem)
         .then(result => {
@@ -94,7 +94,7 @@ createApp({
 
       this.nuovoItemInserito= '';
       }
-      */
+      
 
     },
 
