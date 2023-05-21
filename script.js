@@ -5,6 +5,7 @@ createApp({
   data() {
 
     return {
+      apiUrl: 'server.php',
       lista: [
         // {
         //   text: 'fare spesa',
@@ -26,6 +27,13 @@ createApp({
   },
 
   methods: { //FUNZIONI
+
+    readList(){
+      axios.get(this.apiUrl)
+      .then(result => {
+        console.log(result.data)
+      })
+    },
 
     elimina(i) {
       if (this.lista[i].done) {
@@ -57,6 +65,6 @@ createApp({
   },
 
   mounted() {
-    console.log("vue funziona")
+    this.readList()
   }
 }).mount('#app')
